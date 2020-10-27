@@ -1,24 +1,36 @@
-
+import java.util.Scanner;
+import java.util.Random;
 /**
- * Write a description of class TooLargeTooSmall here.
+ * This programs allows the user to guess the value of a random integer and will count
+ * the number of attempts made until the correct guess is made.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Peter Kutchen
+ * @version 10/27/20
  */
 public class TooLargeTooSmall {
-    private Integer chosenNum;
-
-    /**
-     * Constructor for objects of class TooLargeTooSmall
-     */
-    public TooLargeTooSmall(Integer seed) {
-        // initialise instance variables
-        chosenNum = seed;
-    }
+    Scanner scanner = new Scanner(System.in);
+    Random rand = new Random();
+    int upperbound = 10;
+    int randomNumber = rand.nextInt(upperbound);
     
-    public Integer guess(Integer g) {
-        
-        return chosenNum;
-
+    public String guess() {
+        String results = "";
+        System.out.println("Please take your first guess!");
+        int count = 0;
+        while(results != "correct!") {
+            int chosenNum = scanner.nextInt();
+        if(chosenNum < randomNumber) {
+            results = "Your guess is less than the random number";
+            System.out.println(results);
+            count++;
+    } else if(chosenNum > randomNumber) {
+        results = "Your guess is more than the random number";
+        System.out.println(results);
+        count++;
+    } else {
+        results = "correct!";
     }
+}
+    return "Your guess is " + results + " and it took you " + count + " guesses.";
+}
 }
